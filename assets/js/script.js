@@ -302,7 +302,7 @@ var saveTasks = function() {
 
 var loadTasks = function() {
     // get tasks from local storage
-    var tasks = localStorage.getItem("tasks");
+    tasks = localStorage.getItem("tasks");
     
     // convert tasks from string back to array of objects
     if (tasks === null) {
@@ -318,7 +318,7 @@ var loadTasks = function() {
         
         tasks[i].id === taskIdCounter;
         
-        var listItemEl = document.createElement("li");
+        listItemEl = document.createElement("li");
         listItemEl.className = "task-item";
     
         //add task id as a custom attribute
@@ -327,14 +327,14 @@ var loadTasks = function() {
         listItemEl.setAttribute("draggable", "true");
        
         //create div to hold task info and add to list item
-        var taskInfoEl = document.createElement("div");
+        taskInfoEl = document.createElement("div");
         //give it a class name
         taskInfoEl.className = "task-info";
         //add HTML content to div
         taskInfoEl.innerHTML = "<h3 class='task-name'>" + tasks[i].name + "</h3><span class='task-type'>" + tasks[i].type + "</span>";
         listItemEl.appendChild(taskInfoEl);
 
-        var taskActionsEl = createTaskActions(tasks[i].id);
+        taskActionsEl = createTaskActions(tasks[i].id);
         listItemEl.appendChild(taskActionsEl);
 
         if (tasks[i].status === "to do") {
@@ -345,7 +345,7 @@ var loadTasks = function() {
             listItemEl.querySelector("select[name='status-change']").selectedIndex = 1;
             tasksInProgressEl.appendChild(listItemEl);
         }
-        else if(tasks[i].status === "complete") {
+        else if(tasks[i].status === "completed") {
             listItemEl.querySelector("select[name='status-change']").selectedIndex = 2;
             tasksCompletedEl.appendChild(listItemEl);
         }
